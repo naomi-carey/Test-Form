@@ -1,5 +1,7 @@
 import React from "react";
 import countries from "./countries";
+import Analytics from "analytics";
+import segmentPlugin from "@analytics/segment";
 
 export default function App() {
   const [email, setEmail] = React.useState("");
@@ -18,6 +20,18 @@ export default function App() {
     event.preventDefault();
   };
 
+  const analytics = Analytics({
+    app: "awesome-app",
+    plugins: [
+      segmentPlugin({
+        writeKey: "FMhLMiOMMwXX5GO8Xcfcr3IHQbv7ZBFk",
+      }),
+    ],
+  });
+  analytics.identify("user-id-xyz", {
+    firstName: "bill",
+    lastName: "murray",
+  });
   return (
     <form onSubmit={handleSubmit}>
       <h1>Create Account</h1>
