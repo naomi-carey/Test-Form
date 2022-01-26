@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import countries from "./countries";
 
 export default function App() {
